@@ -10,4 +10,14 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   s.source_files  = 'Classes/**/*.swift'
   s.resources     = ['Classes/Assets.xcassets', 'Classes/**/*.xib']
+
+  s.subspec 'Localization' do |t|
+    %w|en ko|.map {|localename|
+      t.subspec localename do |u|
+        u.ios.resources = "Classes/#{localename}.lproj"
+        u.ios.preserve_paths = "Classes/#{localename}.lproj"
+     end
+    }
+  end
+
 end

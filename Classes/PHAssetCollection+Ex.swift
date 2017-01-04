@@ -36,18 +36,6 @@ extension PHAssetCollection {
     public func addImage(_ image: UIImage, completion: PhotosAddImageCompletion?) {
         var assetPlaceholder : PHObjectPlaceholder?
         PHPhotoLibrary.shared().performChanges({
-            /*
-            if #available(iOS 9.0, *) {
-                let options = PHAssetResourceCreationOptions()
-                options.originalFilename = "fileName"
-                let newcreation: PHAssetCreationRequest = PHAssetCreationRequest.forAsset()
-                newcreation.addResource(with: .photo, data: UIImageJPEGRepresentation(image, 1)!, options: options)
-                assetPlaceholder = newcreation.placeholderForCreatedAsset
-            } else {
-                let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
-                assetPlaceholder = assetChangeRequest.placeholderForCreatedAsset
-            }
-            */
             let createAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
             assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
             if let albumChangeRequest = PHAssetCollectionChangeRequest(for: self) {

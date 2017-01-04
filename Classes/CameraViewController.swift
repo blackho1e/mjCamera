@@ -1,7 +1,6 @@
 import UIKit
 import AVFoundation
-
-public typealias CameraViewCompletion = (UIImage?) -> Void
+import Photos
 
 public class CameraViewController: UIViewController {
 
@@ -12,10 +11,15 @@ public class CameraViewController: UIViewController {
     @IBOutlet weak var switchCameraButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var gridView: UIView!
+    @IBOutlet weak var permissionsView: UIView!
+    @IBOutlet weak var permissionTitleView: UILabel!
+    @IBOutlet weak var permissionDescView: UILabel!
+    @IBOutlet weak var permissionSettingsButton: UIButton!
     
-    var onCompletion: CameraViewCompletion?
+    private var onCompletion: CameraViewControllerCompletion?
+    open var albumName: String = ""
     
-    public init(completion: @escaping CameraViewCompletion) {
+    public init(completion: @escaping CameraViewControllerCompletion) {
         super.init(nibName: nil, bundle: nil)
         onCompletion = completion
     }
@@ -25,24 +29,37 @@ public class CameraViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     open override func loadView() {
         super.loadView()
-        self.view.backgroundColor = UIColor.black
         if let view = UINib(nibName: "CameraViewController", bundle: Bundle(for: self.classForCoder))
                         .instantiate(withOwner: self, options: nil).first as? UIView {
             self.view = view
         }
+        self.view.backgroundColor = UIColor.black
         [gridView,
          closeButton,
          flashButton,
          gridButton,
          switchCameraButton,
-         takePhotoButton
+         takePhotoButton,
+         permissionsView
         ].forEach({ self.view.addSubview($0) })
         view.setNeedsUpdateConstraints()
+    }
+    
+    open override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
+    }
+    
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        get {
+            return .portrait
+        }
     }
     
     open override var shouldAutorotate: Bool {
@@ -50,31 +67,34 @@ public class CameraViewController: UIViewController {
             return false
         }
     }
- 
-    open override var prefersStatusBarHidden: Bool {
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         get {
-            return true
+            return .portrait
         }
     }
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(rotateCameraView),
+        NotificationCenter.default.addObserver(self, selector: #selector(rotateCameraView(_:)),
                                                name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        checkPermissions()
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         cameraView?.startSession()
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIDevice.current.endGeneratingDeviceOrientationNotifications()
         cameraView?.stopSession()
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
-        onCompletion?(nil)
+        onCompletion?(nil, nil)
     }
     
     @IBAction func flashButtonPressed(_ sender: Any) {
@@ -85,18 +105,36 @@ public class CameraViewController: UIViewController {
         self.togleGrid()
     }
     
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.openURL(appSettings)
+        }
+    }
+    
     @IBAction func switchCameraButton(_ sender: Any) {
         cameraView.switchCamera()
         flashButton.isHidden = cameraView.currentPosition == AVCaptureDevicePosition.front
     }
     
     @IBAction func takePhotoButtonPressed(_ sender: Any) {
-        self.takePhoto { image in
-            self.onCompletion?(image)
+        self.takePhoto { image, asset in
+            self.onCompletion?(image, asset)
         }
     }
     
-    func rotateCameraView() {
+    private func checkPermissions() {
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) != .authorized {
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { granted in
+                DispatchQueue.main.async() {
+                    if !granted {
+                        self.showNoPermissionsView()
+                    }
+                }
+            }
+        }
+    }
+    
+    func rotateCameraView(_ notification: Notification) {
         switch UIDevice.current.orientation {
         case .portrait:
             updateToRotation(angle: 0)
@@ -116,7 +154,14 @@ public class CameraViewController: UIViewController {
         //cameraView.rotatePreview()
     }
     
-    open func takePhoto(completion: @escaping TakePictureCompletion) {
+    func showNoPermissionsView() {
+        permissionTitleView.text = "permissionsTitle".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+        permissionDescView.text = "permissionsDesc".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+        permissionSettingsButton.setTitle("permissionsSettings".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self)), for: UIControlState())
+        permissionsView.isHidden = false
+    }
+    
+    open func takePhoto(completion: @escaping CameraViewControllerCompletion) {
         guard let output = cameraView.imageOutput,
             let connection = output.connection(withMediaType: AVMediaTypeVideo) else {
                 return
@@ -129,8 +174,18 @@ public class CameraViewController: UIViewController {
                     self.toggleButtons(enabled: true)
                     return
                 }
-                completion(image)
-                self.toggleButtons(enabled: true)
+                
+                PHAssetCollection.saveImageToAlbum(image: image, albumName: self.albumName, completion: { assetPlaceholder, error in
+                    let localId = assetPlaceholder?.localIdentifier
+                    let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId!], options: nil)
+                    if let asset = assets.firstObject {
+                        self.toggleButtons(enabled: true)
+                        completion(image, asset)
+                    } else {
+                        self.showNoPermissionsView()
+                        completion(image, nil)
+                    }
+                })
             }
         }
     }

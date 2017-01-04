@@ -1,0 +1,4 @@
+
+permissionsTitle = "Camera Access Denied";
+permissionsDesc = "Please enable camera access in your privacy settings";
+permissionsSettings = "Settings";

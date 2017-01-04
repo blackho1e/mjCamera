@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1046B3861E1C95CC00F1DF8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046B3821E1C95CC00F1DF8C /* LaunchScreen.storyboard */; };
+		1046B3871E1C95CC00F1DF8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1046B3841E1C95CC00F1DF8C /* Main.storyboard */; };
 		10C4FFDE1E0A5712008707F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4FFDD1E0A5712008707F3 /* AppDelegate.swift */; };
 		10C4FFE01E0A5712008707F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4FFDF1E0A5712008707F3 /* ViewController.swift */; };
-		10C4FFE31E0A5712008707F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C4FFE11E0A5712008707F3 /* Main.storyboard */; };
 		10C4FFE51E0A5712008707F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10C4FFE41E0A5712008707F3 /* Assets.xcassets */; };
-		10C4FFE81E0A5712008707F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C4FFE61E0A5712008707F3 /* LaunchScreen.storyboard */; };
 		B9E60344BD4D986582DC0E12 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28514ECA386003F32E864487 /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1046B3831E1C95CC00F1DF8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1046B3851E1C95CC00F1DF8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1046B3881E1C95D600F1DF8C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1046B3891E1C95D600F1DF8C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		1046B38A1E1C967C00F1DF8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1046B38B1E1C967C00F1DF8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		10C4FFDA1E0A5712008707F3 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10C4FFDD1E0A5712008707F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10C4FFDF1E0A5712008707F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		10C4FFE21E0A5712008707F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10C4FFE41E0A5712008707F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		10C4FFE71E0A5712008707F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10C4FFE91E0A5712008707F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28514ECA386003F32E864487 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6AFE748A5392318DD84844 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -61,11 +65,11 @@
 		10C4FFDC1E0A5712008707F3 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				1046B3821E1C95CC00F1DF8C /* LaunchScreen.storyboard */,
+				1046B3841E1C95CC00F1DF8C /* Main.storyboard */,
 				10C4FFDD1E0A5712008707F3 /* AppDelegate.swift */,
 				10C4FFDF1E0A5712008707F3 /* ViewController.swift */,
-				10C4FFE11E0A5712008707F3 /* Main.storyboard */,
 				10C4FFE41E0A5712008707F3 /* Assets.xcassets */,
-				10C4FFE61E0A5712008707F3 /* LaunchScreen.storyboard */,
 				10C4FFE91E0A5712008707F3 /* Info.plist */,
 			);
 			path = Example;
@@ -151,9 +155,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C4FFE81E0A5712008707F3 /* LaunchScreen.storyboard in Resources */,
+				1046B3871E1C95CC00F1DF8C /* Main.storyboard in Resources */,
 				10C4FFE51E0A5712008707F3 /* Assets.xcassets in Resources */,
-				10C4FFE31E0A5712008707F3 /* Main.storyboard in Resources */,
+				1046B3861E1C95CC00F1DF8C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,20 +224,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		10C4FFE11E0A5712008707F3 /* Main.storyboard */ = {
+		1046B3821E1C95CC00F1DF8C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				10C4FFE21E0A5712008707F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		10C4FFE61E0A5712008707F3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10C4FFE71E0A5712008707F3 /* Base */,
+				1046B3831E1C95CC00F1DF8C /* Base */,
+				1046B3881E1C95D600F1DF8C /* ko */,
+				1046B38A1E1C967C00F1DF8C /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1046B3841E1C95CC00F1DF8C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1046B3851E1C95CC00F1DF8C /* Base */,
+				1046B3891E1C95D600F1DF8C /* ko */,
+				1046B38B1E1C967C00F1DF8C /* en */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -243,6 +251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -294,6 +303,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

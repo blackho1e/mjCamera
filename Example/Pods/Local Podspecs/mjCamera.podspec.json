@@ -22,5 +22,26 @@
   "resources": [
     "Classes/Assets.xcassets",
     "Classes/**/*.xib"
+  ],
+  "subspecs": [
+    {
+      "name": "Localization",
+      "subspecs": [
+        {
+          "name": "en",
+          "ios": {
+            "resources": "Classes/en.lproj",
+            "preserve_paths": "Classes/en.lproj"
+          }
+        },
+        {
+          "name": "ko",
+          "ios": {
+            "resources": "Classes/ko.lproj",
+            "preserve_paths": "Classes/ko.lproj"
+          }
+        }
+      ]
+    }
   ]
 }

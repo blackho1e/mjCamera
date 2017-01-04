@@ -149,20 +149,6 @@ open class CameraView: UIView {
                 return
             }
             
-            //*
-            if #available(iOS 9.0, *) {
-                AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1103), nil)
-            } else {
-                AudioServicesPlaySystemSound(1103)
-            }
-            //*/
-            /*
-            var soundId: SystemSoundID = 0
-            let filePath = Bundle.main.path(forResource: "photoShutter2", ofType: "aiff")!
-            AudioServicesCreateSystemSoundID(NSURL(fileURLWithPath: filePath), &soundId)
-            AudioServicesPlaySystemSound(soundId)
- */
-            
             videoConnection.videoOrientation = orientation
             self.imageOutput.captureStillImageAsynchronously(from: videoConnection, completionHandler: { buffer, error in
                 guard let buffer = buffer,
