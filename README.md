@@ -3,6 +3,7 @@ A light weight & simple & easy camera for iOS by Swift.
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/mjCamera.svg)]()[![Swift version](https://img.shields.io/badge/swift-3.0-orange.svg)]()[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
+<img width="50%" height="50%" src="https://github.com/blackho1e/mjCamera/raw/master/preview.png" />
 
 ###Installation & Requirements
 
