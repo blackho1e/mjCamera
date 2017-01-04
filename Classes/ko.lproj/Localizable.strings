@@ -1,4 +1,4 @@
 
 permissionsTitle = "카메라 액세스가 거부되었습니다.";
-permissionsDesc = "설정에서 카메라 액세스 할수 있도록 설정하십시오.";
+permissionsDesc = "설정에서 카메라 권한을 허용해주세요.";
 permissionsSettings = "설정";
