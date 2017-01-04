@@ -145,7 +145,9 @@ open class CameraView: UIView {
         cameraQueue.sync {
             let orientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!
             guard let videoConnection: AVCaptureConnection = self.imageOutput.connection(withMediaType: AVMediaTypeVideo) else {
-                completion(nil)
+                DispatchQueue.main.async() {
+                    completion(nil)
+                }
                 return
             }
             
@@ -154,7 +156,9 @@ open class CameraView: UIView {
                 guard let buffer = buffer,
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer),
                     let image = UIImage(data: imageData) else {
-                        completion(nil)
+                        DispatchQueue.main.async() {
+                            completion(nil)
+                        }
                         return
                 }
                 DispatchQueue.main.async() {

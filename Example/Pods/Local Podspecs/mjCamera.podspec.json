@@ -1,6 +1,6 @@
 {
   "name": "mjCamera",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "summary": "A simple camera library",
   "homepage": "https://github.com/blackho1e/mjCamera",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/blackho1e/mjCamera.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
   "platforms": {
     "ios": "8.0"
@@ -21,27 +21,7 @@
   "source_files": "Classes/**/*.swift",
   "resources": [
     "Classes/Assets.xcassets",
-    "Classes/**/*.xib"
-  ],
-  "subspecs": [
-    {
-      "name": "Localization",
-      "subspecs": [
-        {
-          "name": "en",
-          "ios": {
-            "resources": "Classes/en.lproj",
-            "preserve_paths": "Classes/en.lproj"
-          }
-        },
-        {
-          "name": "ko",
-          "ios": {
-            "resources": "Classes/ko.lproj",
-            "preserve_paths": "Classes/ko.lproj"
-          }
-        }
-      ]
-    }
+    "Classes/**/*.xib",
+    "Classes/*.lproj"
   ]
 }

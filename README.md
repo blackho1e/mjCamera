@@ -1,7 +1,7 @@
 ##mjCamera
 A light weight & simple & easy camera for iOS by Swift.
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/mjCamera.svg)]()[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()![Swift version](https://img.shields.io/badge/swift-3.0-orange.svg)
+[![CocoaPods](https://img.shields.io/cocoapods/v/mjCamera.svg)]()[![Swift version](https://img.shields.io/badge/swift-3.0-orange.svg)]()[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 
 ###Installation & Requirements
@@ -23,16 +23,6 @@ let cameraViewController = CameraViewController() { image in
 		self.dismiss(animated: true, completion: nil)
 		return
 	}
-            
-	PHAssetCollection.saveImageToAlbum(image: image, albumName: "mjCamera", completion: { assetPlaceholder, error in
-		let localId = assetPlaceholder?.localIdentifier
-		let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId!], options: nil)
-		if let asset = assets.firstObject {
-			asset.requestContentEditingInput(with: PHContentEditingInputRequestOptions()) { (input, _) in
-				let url = input?.fullSizeImageURL
-			}
-		}
-	})
 }
 present(cameraViewController, animated: true, completion: nil)
 ```

@@ -1,4 +1,8 @@
 
-permissionsTitle = "Camera Access Denied";
-permissionsDesc = "Please enable camera access in your privacy settings";
-permissionsSettings = "Settings";
+permissions.title = "Camera Access Denied";
+permissions.desc = "Please enable camera access in your privacy settings";
+
+permissions.library.title = "Photos Access Denied";
+permissions.library.desc = "Please enable photo library access in your privacy settings";
+
+permissions.settings = "Settings";

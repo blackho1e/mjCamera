@@ -6,7 +6,11 @@ public typealias PhotosAddImageCompletion = (_ assetPlaceholder: PHObjectPlaceho
 extension PHAssetCollection {
     public class func saveImageToAlbum(image: UIImage, albumName: String, completion: PhotosAddImageCompletion?) {
         self.findOrCreateAlbum(name: albumName) { (collection) -> Void in
-            collection?.addImage(image, completion: completion)
+            if let collection = collection {
+                collection.addImage(image, completion: completion)
+            } else {
+                completion?(nil, nil)
+            }
         }
     }
     

@@ -1,4 +1,8 @@
 
-permissionsTitle = "카메라 액세스가 거부되었습니다.";
-permissionsDesc = "설정에서 카메라 권한을 허용해주세요.";
-permissionsSettings = "설정";
+permissions.title = "카메라 액세스 거부";
+permissions.desc = "설정에서 카메라 권한을 허용해주세요.";
+
+permissions.library.title = "사진 액세스 거부";
+permissions.library.desc = "설정에서 사진 권한을 허용해주세요.";
+
+permissions.settings = "설정";

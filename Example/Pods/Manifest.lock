@@ -1,11 +1,5 @@
 PODS:
-  - mjCamera (0.0.1):
-    - mjCamera/Localization (= 0.0.1)
-  - mjCamera/Localization (0.0.1):
-    - mjCamera/Localization/en (= 0.0.1)
-    - mjCamera/Localization/ko (= 0.0.1)
-  - mjCamera/Localization/en (0.0.1)
-  - mjCamera/Localization/ko (0.0.1)
+  - mjCamera (0.0.2)
 
 DEPENDENCIES:
   - mjCamera (from `../`)
@@ -15,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  mjCamera: 33b39e598bf06a8ab4991ee9ca835a1790c5077c
+  mjCamera: 7dfcfd5b042612a9d017cea717e244a7e97481c5
 
 PODFILE CHECKSUM: 9c5df9f182e9f9e4095c85b2c4ca29e814fa91ba
 

@@ -154,10 +154,16 @@ public class CameraViewController: UIViewController {
         //cameraView.rotatePreview()
     }
     
-    func showNoPermissionsView() {
-        permissionTitleView.text = "permissionsTitle".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
-        permissionDescView.text = "permissionsDesc".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
-        permissionSettingsButton.setTitle("permissionsSettings".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self)), for: UIControlState())
+    func showNoPermissionsView(library: Bool = false) {
+        if library {
+            permissionTitleView.text = "permissions.library.title".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+            permissionDescView.text = "permissions.library.desc".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+        } else {
+            permissionTitleView.text = "permissions.title".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+            permissionDescView.text = "permissions.desc".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+        }
+        permissionSettingsButton.setTitle("permissions.settings".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self)), for: UIControlState())
+        cameraView.isHidden = true
         permissionsView.isHidden = false
     }
     
@@ -176,13 +182,17 @@ public class CameraViewController: UIViewController {
                 }
                 
                 PHAssetCollection.saveImageToAlbum(image: image, albumName: self.albumName, completion: { assetPlaceholder, error in
-                    let localId = assetPlaceholder?.localIdentifier
-                    let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId!], options: nil)
-                    if let asset = assets.firstObject {
-                        self.toggleButtons(enabled: true)
-                        completion(image, asset)
+                    if let localId = assetPlaceholder?.localIdentifier {
+                        let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId], options: nil)
+                        if let asset = assets.firstObject {
+                            self.toggleButtons(enabled: true)
+                            completion(image, asset)
+                        } else {
+                            self.showNoPermissionsView(library: true)
+                            completion(image, nil)
+                        }
                     } else {
-                        self.showNoPermissionsView()
+                        self.showNoPermissionsView(library: true)
                         completion(image, nil)
                     }
                 })

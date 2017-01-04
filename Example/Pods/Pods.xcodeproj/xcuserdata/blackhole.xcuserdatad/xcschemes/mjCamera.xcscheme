@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9D36CB621EF828CA5D605B7DD3745718'
+               BlueprintIdentifier = '1EC9A214ED3897FA8EA8A6ADEE3EFD62'
                BlueprintName = 'mjCamera'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'mjCamera.framework'>
