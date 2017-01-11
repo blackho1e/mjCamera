@@ -142,23 +142,17 @@ open class CameraView: UIView {
     private func checkPermissions() {
         if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) != .authorized {
             AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { granted in
-                DispatchQueue.main.async() {
-                    if !granted {
+                if granted {
+                    if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
+                        PHPhotoLibrary.requestAuthorization() { _ in
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async() {
                         self.showNoPermissionsView()
-                        return
                     }
                 }
             }
-        }
-        
-        var authorized = false
-        if #available(iOS 8.0, *) {
-            authorized = PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized
-        } else {
-            authorized = ALAssetsLibrary.authorizationStatus() == ALAuthorizationStatus.authorized
-        }
-        if !authorized {
-            self.showNoPermissionsView(library: true)
         }
     }
     
