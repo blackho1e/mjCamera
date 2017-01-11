@@ -7,22 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08A5BF9110A734D94E70B4F9019407CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C598EF2D273174885B7A654663714E /* Assets.xcassets */; };
-		2B0BFD662BE8C28EBF14AAFACF11A526 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D62F2A6B3964C72134538CB8D3673D /* String+Ex.swift */; };
+		113A3B0233210E16F2368120DB0A0C0F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339979D9B7DFDFBB92767222F97BD2D0 /* CameraViewController.swift */; };
+		1A4F9D7C86DCA2747C64340C85501BAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50600A969736CB23E3205BA19067F3C /* Assets.xcassets */; };
+		1CC526E12E79331207C6DB55961BEFC0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE851E3178B8CB074917EEA700E1FC32 /* CameraView.swift */; };
 		31D1134660794E6B9FAEDD7D60DE32E9 /* Pods-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BDE82371C83FA9AE91B05F77ACAA36 /* Pods-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36AEFB1AEB46E0F0B5A01E58F8CD5767 /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 349E36F7023361BCFF4AF43731FC7C72 /* ko.lproj */; };
+		3B720F52032AB3B15DEE26EF2DC9274F /* mjCamera-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CC699F9DBDC4D6046FCB249FDD1A22AC /* mjCamera-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D1BC205946B5F059A29C724AA511365 /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B5DF4E04EF21DB02F23FC2EE4C7781 /* UIColor+Ex.swift */; };
+		5F9DFAA00ED678E627CF35DFDA5212F5 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2120C281F60C15BB4CAB1726256C64E /* String+Ex.swift */; };
+		712BD7672364657B216735485E7387E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		81522102AF0B53EBB98E23FE28B685B9 /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 699118D7DDD5F335E4FB8B17DC0F12D2 /* Pods-Example-dummy.m */; };
-		83C2AD4989114DC1A5FC2DF69635733E /* PHAssetCollection+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0AA22205D840550F4FC5D882B82A78 /* PHAssetCollection+Ex.swift */; };
-		A0F675E1E37674342BA22FDBBA05F93B /* mjCamera-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 100EDFF00518EF9DBCF37AAED90B116A /* mjCamera-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A1406788BD4FC0C011B5C3E463EA02FA /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A005151221CE273419DA79A2A3E6608B /* Base.lproj */; };
 		A3A77A51DC512850DC217202392125F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		B0F200846C1CB182840EB827D33B6C52 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7729A834EC8A7D0608C6F08D32626937 /* CameraViewController.swift */; };
-		B40838249771A6EBC5B9014A6E7A51EA /* mjCamera-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B86755E0A0201FC0ED18B5DCEB5619 /* mjCamera-dummy.m */; };
-		B62F254719668AD4A0C90E88D876D57C /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 27869C0E48A36D2EFF93C645933FA7DA /* en.lproj */; };
-		BD41AE3D8F7614D68AE6793A191186C3 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1F00F51EC26EAF866E178D20E19A9F /* CameraView.swift */; };
-		C6C001A3874044B6265C0A4D118C1628 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		C9E3F6ADB9869960ACD9309A995B0D36 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F27E8295D7016A6EC3451A625DC6D8 /* Constants.swift */; };
-		CFAE170432A0E3924D82239994CF3E1E /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D351579E7395015E4F1DF78589E7EAEC /* ko.lproj */; };
-		D0FEE86DC68B621F2D22B2EDF022E214 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15B74B1AF1BEB4B9726FC6A7AC89CAB /* CameraViewController.xib */; };
+		A523E1BFB63AB5A5044E89C24A17E9BE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7AB664851B81C3656D5905C88182E2 /* Constants.swift */; };
+		A7875A0A218CB0C892BA0489C7194BC4 /* mjCamera-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958B26D5637C9188BB9F39BE4E8C93 /* mjCamera-dummy.m */; };
+		AC1301F41D228EB142360AAADC56DFAE /* PHAssetCollection+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA01CB7C829FBA37FE44B60023C10A1 /* PHAssetCollection+Ex.swift */; };
+		AE292CDC300F2E838152BBE63D8C20AD /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB6D1C907E344CD58726E9C2875D173 /* CameraViewController.xib */; };
+		B5BB4BABE75392DC634C6DC039D5F6E2 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 862C27F23F4FB34F0A5FF3E636D0F99E /* en.lproj */; };
+		B780C249DE8B16C89AD3194C31E4CE87 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7E4BF3D6D3B9D8769C585951D400A6C1 /* Base.lproj */; };
+		CC4232065CD2D002FEFD470C36DBC338 /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E996761D70850D1F71175F97B727804 /* CameraView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +32,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1EC9A214ED3897FA8EA8A6ADEE3EFD62;
+			remoteGlobalIDString = 00FDABBC5F3759FC691D581ED3FFFD83;
 			remoteInfo = mjCamera;
 		};
 /* End PBXContainerItemProxy section */
@@ -38,37 +40,47 @@
 /* Begin PBXFileReference section */
 		01E6907CF2644EB1CF8E23F708A3DA0B /* Pods-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-resources.sh"; sourceTree = "<group>"; };
 		07ACB21DE2B88191EA52B05076FBAA6C /* mjCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = mjCamera.framework; path = mjCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		100EDFF00518EF9DBCF37AAED90B116A /* mjCamera-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "mjCamera-umbrella.h"; sourceTree = "<group>"; };
+		0BE6778C3AFD25B20BB0908C87B6488D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		119072C64A19799964E1620D83F514FB /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
-		11D62F2A6B3964C72134538CB8D3673D /* String+Ex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
+		13DFD3890E66830D85CA0B2580D65837 /* mjCamera-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "mjCamera-prefix.pch"; sourceTree = "<group>"; };
 		149054C495E8EC590CAB4C524133016F /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		27869C0E48A36D2EFF93C645933FA7DA /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
-		27C598EF2D273174885B7A654663714E /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		36B86755E0A0201FC0ED18B5DCEB5619 /* mjCamera-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "mjCamera-dummy.m"; sourceTree = "<group>"; };
-		3A20C19BBEE1377F61FC6C23135447A0 /* mjCamera-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "mjCamera-prefix.pch"; sourceTree = "<group>"; };
+		167EE8A4C0DEDFDCA84E783B52CA1B4F /* mjCamera.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = mjCamera.modulemap; sourceTree = "<group>"; };
+		1C7AB664851B81C3656D5905C88182E2 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1DA01CB7C829FBA37FE44B60023C10A1 /* PHAssetCollection+Ex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PHAssetCollection+Ex.swift"; sourceTree = "<group>"; };
+		339979D9B7DFDFBB92767222F97BD2D0 /* CameraViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		349E36F7023361BCFF4AF43731FC7C72 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ko.lproj; sourceTree = "<group>"; };
 		552550F3F912264E5D073F8893691F88 /* Pods-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-frameworks.sh"; sourceTree = "<group>"; };
-		625B79AF12606085592B6B4EA80C5601 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		699118D7DDD5F335E4FB8B17DC0F12D2 /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
-		6C1F00F51EC26EAF866E178D20E19A9F /* CameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		6D0AA22205D840550F4FC5D882B82A78 /* PHAssetCollection+Ex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PHAssetCollection+Ex.swift"; sourceTree = "<group>"; };
-		70F27E8295D7016A6EC3451A625DC6D8 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		764D33E23CE6C1111110B04F5CBADADB /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		7729A834EC8A7D0608C6F08D32626937 /* CameraViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		7A48EED7E3E12A172A80417A29D31A3B /* mjCamera.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = mjCamera.modulemap; sourceTree = "<group>"; };
+		7E4BF3D6D3B9D8769C585951D400A6C1 /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = Base.lproj; sourceTree = "<group>"; };
+		7E996761D70850D1F71175F97B727804 /* CameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
+		862C27F23F4FB34F0A5FF3E636D0F99E /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
 		884BD323C4C849B4FF7DE74A7B16D7E6 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example.framework; path = "Pods-Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A005151221CE273419DA79A2A3E6608B /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = Base.lproj; sourceTree = "<group>"; };
-		A5151C4E5ACD44007E68235DA00397E1 /* mjCamera.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = mjCamera.xcconfig; sourceTree = "<group>"; };
 		A661FECCEBFF9D01869EE3B29C4C1EFF /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C15B74B1AF1BEB4B9726FC6A7AC89CAB /* CameraViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		BE851E3178B8CB074917EEA700E1FC32 /* CameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		C1958B26D5637C9188BB9F39BE4E8C93 /* mjCamera-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "mjCamera-dummy.m"; sourceTree = "<group>"; };
+		C2120C281F60C15BB4CAB1726256C64E /* String+Ex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
+		C50600A969736CB23E3205BA19067F3C /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9BDE82371C83FA9AE91B05F77ACAA36 /* Pods-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-umbrella.h"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D351579E7395015E4F1DF78589E7EAEC /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ko.lproj; sourceTree = "<group>"; };
+		CC699F9DBDC4D6046FCB249FDD1A22AC /* mjCamera-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "mjCamera-umbrella.h"; sourceTree = "<group>"; };
+		D1B5DF4E04EF21DB02F23FC2EE4C7781 /* UIColor+Ex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
 		E512A5F985F876750237FD237C3AEEDA /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		EFFB74AAA6B2AE8DABF0E88E61E09178 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB6D1C907E344CD58726E9C2875D173 /* CameraViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		FD81E4C86B09DFBD0999119927C813DC /* mjCamera.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = mjCamera.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		10E0EB09E271A9C7F6919782B9E9DB06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				712BD7672364657B216735485E7387E7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		29ECB8F2017812867E60D7EC00A49094 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,40 +89,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96625F995F76BB5E2B9C9D3D55C1D230 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6C001A3874044B6265C0A4D118C1628 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02E9B8310A7E1EBE64745843EF295CDC /* Resources */ = {
+		2C24FD63DE6E2D60DA5463BBBC7B0A16 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7173A5C00DC5ED2940161A5F0B29E636 /* Classes */,
+				9B92AFE555E2A9D81C0D17B7F76EDCF5 /* Classes */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		07CAF02A52BA534D6B4527057232C1CE /* mjCamera */ = {
+		4BA7D7C5EAADC207CA0A0763E8F8BDC3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A4CE65CA452964B8913DE8DF505079AC /* Classes */,
-				02E9B8310A7E1EBE64745843EF295CDC /* Resources */,
-				BE33D2E9379B89632BD5C3B804A900EB /* Support Files */,
+				BE851E3178B8CB074917EEA700E1FC32 /* CameraView.swift */,
+				339979D9B7DFDFBB92767222F97BD2D0 /* CameraViewController.swift */,
+				1C7AB664851B81C3656D5905C88182E2 /* Constants.swift */,
+				1DA01CB7C829FBA37FE44B60023C10A1 /* PHAssetCollection+Ex.swift */,
+				C2120C281F60C15BB4CAB1726256C64E /* String+Ex.swift */,
+				D1B5DF4E04EF21DB02F23FC2EE4C7781 /* UIColor+Ex.swift */,
 			);
-			name = mjCamera;
-			path = ../..;
+			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		4F683F44692127ABC271A90F488B3100 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				07CAF02A52BA534D6B4527057232C1CE /* mjCamera */,
+				F393D38A112A7296A66EEFE1E421C173 /* mjCamera */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -123,17 +130,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7173A5C00DC5ED2940161A5F0B29E636 /* Classes */ = {
+		742C302E694CA9DD6F26BC7CB64F4B3E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				27C598EF2D273174885B7A654663714E /* Assets.xcassets */,
-				A005151221CE273419DA79A2A3E6608B /* Base.lproj */,
-				C15B74B1AF1BEB4B9726FC6A7AC89CAB /* CameraViewController.xib */,
-				27869C0E48A36D2EFF93C645933FA7DA /* en.lproj */,
-				D351579E7395015E4F1DF78589E7EAEC /* ko.lproj */,
+				0BE6778C3AFD25B20BB0908C87B6488D /* Info.plist */,
+				167EE8A4C0DEDFDCA84E783B52CA1B4F /* mjCamera.modulemap */,
+				FD81E4C86B09DFBD0999119927C813DC /* mjCamera.xcconfig */,
+				C1958B26D5637C9188BB9F39BE4E8C93 /* mjCamera-dummy.m */,
+				13DFD3890E66830D85CA0B2580D65837 /* mjCamera-prefix.pch */,
+				CC699F9DBDC4D6046FCB249FDD1A22AC /* mjCamera-umbrella.h */,
 			);
-			name = Classes;
-			path = Classes;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/mjCamera";
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -155,6 +163,20 @@
 			);
 			sourceTree = "<group>";
 		};
+		9B92AFE555E2A9D81C0D17B7F76EDCF5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C50600A969736CB23E3205BA19067F3C /* Assets.xcassets */,
+				7E4BF3D6D3B9D8769C585951D400A6C1 /* Base.lproj */,
+				7E996761D70850D1F71175F97B727804 /* CameraView.xib */,
+				FAB6D1C907E344CD58726E9C2875D173 /* CameraViewController.xib */,
+				862C27F23F4FB34F0A5FF3E636D0F99E /* en.lproj */,
+				349E36F7023361BCFF4AF43731FC7C72 /* ko.lproj */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		A1A94A8A33267B1B513508D89CAD9260 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,19 +184,6 @@
 				884BD323C4C849B4FF7DE74A7B16D7E6 /* Pods_Example.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A4CE65CA452964B8913DE8DF505079AC /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				6C1F00F51EC26EAF866E178D20E19A9F /* CameraView.swift */,
-				7729A834EC8A7D0608C6F08D32626937 /* CameraViewController.swift */,
-				70F27E8295D7016A6EC3451A625DC6D8 /* Constants.swift */,
-				6D0AA22205D840550F4FC5D882B82A78 /* PHAssetCollection+Ex.swift */,
-				11D62F2A6B3964C72134538CB8D3673D /* String+Ex.swift */,
-			);
-			name = Classes;
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -185,18 +194,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BE33D2E9379B89632BD5C3B804A900EB /* Support Files */ = {
+		F393D38A112A7296A66EEFE1E421C173 /* mjCamera */ = {
 			isa = PBXGroup;
 			children = (
-				625B79AF12606085592B6B4EA80C5601 /* Info.plist */,
-				7A48EED7E3E12A172A80417A29D31A3B /* mjCamera.modulemap */,
-				A5151C4E5ACD44007E68235DA00397E1 /* mjCamera.xcconfig */,
-				36B86755E0A0201FC0ED18B5DCEB5619 /* mjCamera-dummy.m */,
-				3A20C19BBEE1377F61FC6C23135447A0 /* mjCamera-prefix.pch */,
-				100EDFF00518EF9DBCF37AAED90B116A /* mjCamera-umbrella.h */,
+				4BA7D7C5EAADC207CA0A0763E8F8BDC3 /* Classes */,
+				2C24FD63DE6E2D60DA5463BBBC7B0A16 /* Resources */,
+				742C302E694CA9DD6F26BC7CB64F4B3E /* Support Files */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/mjCamera";
+			name = mjCamera;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		FE9811ABEB5931E154211FCA14B78350 /* Pods-Example */ = {
@@ -220,14 +226,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0056146DE8EA2EC532E3A7BF84DA0C7D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0F675E1E37674342BA22FDBBA05F93B /* mjCamera-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5C9737AA403981A87BE73B6437562EBF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,17 +234,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB003A71DBD481492E2072AE8919386E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B720F52032AB3B15DEE26EF2DC9274F /* mjCamera-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1EC9A214ED3897FA8EA8A6ADEE3EFD62 /* mjCamera */ = {
+		00FDABBC5F3759FC691D581ED3FFFD83 /* mjCamera */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 31313E334DB80A42DEBE0D6B1402FD16 /* Build configuration list for PBXNativeTarget "mjCamera" */;
+			buildConfigurationList = 428B1A59270CDCAB2070D0CC28791A61 /* Build configuration list for PBXNativeTarget "mjCamera" */;
 			buildPhases = (
-				68104322A966533833D38F63AF3826CF /* Sources */,
-				96625F995F76BB5E2B9C9D3D55C1D230 /* Frameworks */,
-				0664060BD2B5189F8D20820E2D962EEC /* Resources */,
-				0056146DE8EA2EC532E3A7BF84DA0C7D /* Headers */,
+				6811EF02B87B3A5E841E9EE7BF10DCC2 /* Sources */,
+				10E0EB09E271A9C7F6919782B9E9DB06 /* Frameworks */,
+				0721B3307FBEB01B443AF8865136BE9C /* Resources */,
+				DB003A71DBD481492E2072AE8919386E /* Headers */,
 			);
 			buildRules = (
 			);
@@ -296,38 +302,40 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EC9A214ED3897FA8EA8A6ADEE3EFD62 /* mjCamera */,
+				00FDABBC5F3759FC691D581ED3FFFD83 /* mjCamera */,
 				22615C5F11734B0F6BED513FC010FB12 /* Pods-Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0664060BD2B5189F8D20820E2D962EEC /* Resources */ = {
+		0721B3307FBEB01B443AF8865136BE9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08A5BF9110A734D94E70B4F9019407CF /* Assets.xcassets in Resources */,
-				A1406788BD4FC0C011B5C3E463EA02FA /* Base.lproj in Resources */,
-				D0FEE86DC68B621F2D22B2EDF022E214 /* CameraViewController.xib in Resources */,
-				B62F254719668AD4A0C90E88D876D57C /* en.lproj in Resources */,
-				CFAE170432A0E3924D82239994CF3E1E /* ko.lproj in Resources */,
+				1A4F9D7C86DCA2747C64340C85501BAD /* Assets.xcassets in Resources */,
+				B780C249DE8B16C89AD3194C31E4CE87 /* Base.lproj in Resources */,
+				CC4232065CD2D002FEFD470C36DBC338 /* CameraView.xib in Resources */,
+				AE292CDC300F2E838152BBE63D8C20AD /* CameraViewController.xib in Resources */,
+				B5BB4BABE75392DC634C6DC039D5F6E2 /* en.lproj in Resources */,
+				36AEFB1AEB46E0F0B5A01E58F8CD5767 /* ko.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		68104322A966533833D38F63AF3826CF /* Sources */ = {
+		6811EF02B87B3A5E841E9EE7BF10DCC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD41AE3D8F7614D68AE6793A191186C3 /* CameraView.swift in Sources */,
-				B0F200846C1CB182840EB827D33B6C52 /* CameraViewController.swift in Sources */,
-				C9E3F6ADB9869960ACD9309A995B0D36 /* Constants.swift in Sources */,
-				B40838249771A6EBC5B9014A6E7A51EA /* mjCamera-dummy.m in Sources */,
-				83C2AD4989114DC1A5FC2DF69635733E /* PHAssetCollection+Ex.swift in Sources */,
-				2B0BFD662BE8C28EBF14AAFACF11A526 /* String+Ex.swift in Sources */,
+				1CC526E12E79331207C6DB55961BEFC0 /* CameraView.swift in Sources */,
+				113A3B0233210E16F2368120DB0A0C0F /* CameraViewController.swift in Sources */,
+				A523E1BFB63AB5A5044E89C24A17E9BE /* Constants.swift in Sources */,
+				A7875A0A218CB0C892BA0489C7194BC4 /* mjCamera-dummy.m in Sources */,
+				AC1301F41D228EB142360AAADC56DFAE /* PHAssetCollection+Ex.swift in Sources */,
+				5F9DFAA00ED678E627CF35DFDA5212F5 /* String+Ex.swift in Sources */,
+				3D1BC205946B5F059A29C724AA511365 /* UIColor+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +353,7 @@
 		6D11CAC2AE381324210C6C3A507EE0C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = mjCamera;
-			target = 1EC9A214ED3897FA8EA8A6ADEE3EFD62 /* mjCamera */;
+			target = 00FDABBC5F3759FC691D581ED3FFFD83 /* mjCamera */;
 			targetProxy = BBE4F140E60442BE979D0CB72844F6BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -395,6 +403,39 @@
 			};
 			name = Debug;
 		};
+		04871CE16D441B815F4BFFA6949B3643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD81E4C86B09DFBD0999119927C813DC /* mjCamera.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/mjCamera/mjCamera-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/mjCamera/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/mjCamera/mjCamera.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = mjCamera;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -435,71 +476,6 @@
 			};
 			name = Release;
 		};
-		4AFDB150D647DA7E37034CBBE8EDDDAD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5151C4E5ACD44007E68235DA00397E1 /* mjCamera.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/mjCamera/mjCamera-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/mjCamera/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/mjCamera/mjCamera.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = mjCamera;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6429BDF6C7184B982B054A5EAE7D3C2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5151C4E5ACD44007E68235DA00397E1 /* mjCamera.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/mjCamera/mjCamera-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/mjCamera/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/mjCamera/mjCamera.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = mjCamera;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		654168F530BFEF5BAD8F18AAC91D42DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E512A5F985F876750237FD237C3AEEDA /* Pods-Example.release.xcconfig */;
@@ -529,6 +505,38 @@
 				PRODUCT_NAME = Pods_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DF21307FD2710F935127EAEC006F5715 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD81E4C86B09DFBD0999119927C813DC /* mjCamera.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/mjCamera/mjCamera-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/mjCamera/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/mjCamera/mjCamera.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = mjCamera;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -583,11 +591,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		31313E334DB80A42DEBE0D6B1402FD16 /* Build configuration list for PBXNativeTarget "mjCamera" */ = {
+		428B1A59270CDCAB2070D0CC28791A61 /* Build configuration list for PBXNativeTarget "mjCamera" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AFDB150D647DA7E37034CBBE8EDDDAD /* Debug */,
-				6429BDF6C7184B982B054A5EAE7D3C2C /* Release */,
+				04871CE16D441B815F4BFFA6949B3643 /* Debug */,
+				DF21307FD2710F935127EAEC006F5715 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

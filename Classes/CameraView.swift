@@ -1,12 +1,36 @@
 import UIKit
+import AssetsLibrary
 import AVFoundation
+import Photos
 
-protocol CaptureVideoPreviewDelegate {
-    func captureColorInCaptureDevicePointOfInterest(point: CGPoint)
+public enum CameraOutputQuality: Int {
+    case low, medium, high
+}
+
+protocol CameraViewDelegate {
+    func cameraViewCloseButtonTapped()
+    func cameraViewShutterButtonTapped(image: UIImage?, asset: PHAsset?)
 }
 
 open class CameraView: UIView {
 
+    @IBOutlet weak var hLine1: UIView!
+    @IBOutlet weak var hLine2: UIView!
+    @IBOutlet weak var vLine1: UIView!
+    @IBOutlet weak var vLine2: UIView!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var flashButton: UIButton!
+    @IBOutlet weak var gridButton: UIButton!
+    @IBOutlet weak var switchCameraButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
+    
+    @IBOutlet weak var permissionsView: UIView!
+    @IBOutlet weak var permissionTitleView: UILabel!
+    @IBOutlet weak var permissionDescView: UILabel!
+    @IBOutlet weak var permissionSettingsButton: UIButton!
+    
+    var delegate: CameraViewDelegate?
+    var view: UIView!
     var session: AVCaptureSession!
     var input: AVCaptureDeviceInput!
     var device: AVCaptureDevice!
@@ -14,17 +38,146 @@ open class CameraView: UIView {
     var preview: AVCaptureVideoPreviewLayer!
     let cameraQueue = DispatchQueue(label: "net.djcp.CameraViewController.Queue")
     
-    //let focusView = CropOverlay(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-    public var currentPosition = AVCaptureDevicePosition.back
+    var focusView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
+    open var albumName: String = ""
+    open var currentPosition = AVCaptureDevicePosition.back
+    open var cameraOutputQuality = CameraOutputQuality.high
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        prepareView()
+        checkPermissions()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        prepareView()
+        checkPermissions()
+    }
+    
+    func prepareView() {
+        self.view = loadViewFromNib()
+        self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.frame = self.bounds
+        self.addSubview(view)
+        [
+            hLine1,
+            hLine2,
+            vLine1,
+            vLine2,
+            closeButton,
+            flashButton,
+            gridButton,
+            switchCameraButton,
+            takePhotoButton,
+            permissionsView
+        ].forEach({ self.addSubview($0) })
+        self.setNeedsUpdateConstraints()
+    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
         preview?.frame = self.bounds
     }
     
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        delegate?.cameraViewCloseButtonTapped()
+    }
+    
+    @IBAction func flashButtonPressed(_ sender: Any) {
+        self.toggleFlash()
+    }
+    
+    @IBAction func gridButtonPressed(_ sender: Any) {
+        self.toggleGrid()
+    }
+    
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.openURL(appSettings)
+        }
+    }
+    
+    @IBAction func switchCameraButtonPressed(_ sender: Any) {
+        self.switchCamera()
+    }
+    
+    @IBAction func takePhotoButtonPressed(_ sender: Any) {
+        guard let output = self.imageOutput,
+            let connection = output.connection(withMediaType: AVMediaTypeVideo) else {
+                return
+        }
+        
+        if connection.isEnabled {
+            toggleButtons(enabled: false)
+            self.takePicture { image in
+                guard let image = image else {
+                    self.toggleButtons(enabled: true)
+                    return
+                }
+                
+                PHAssetCollection.saveImageToAlbum(image: image, albumName: self.albumName, completion: { assetPlaceholder, error in
+                    self.toggleButtons(enabled: true)
+                    guard let assetPlaceholder = assetPlaceholder else {
+                        if !self.albumName.isEmpty {
+                            self.showNoPermissionsView(library: true)
+                        }
+                        self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
+                        return
+                    }
+                    
+                    let localId = assetPlaceholder.localIdentifier
+                    let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId], options: nil)
+                    if let asset = assets.firstObject {
+                        self.delegate?.cameraViewShutterButtonTapped(image: image, asset: asset)
+                    } else {
+                        self.showNoPermissionsView(library: true)
+                        self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
+                    }
+                })
+            }
+        }
+    }
+    
+    private func checkPermissions() {
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) != .authorized {
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { granted in
+                DispatchQueue.main.async() {
+                    if !granted {
+                        self.showNoPermissionsView()
+                        return
+                    }
+                }
+            }
+        }
+        
+        var authorized = false
+        if #available(iOS 8.0, *) {
+            authorized = PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized
+        } else {
+            authorized = ALAssetsLibrary.authorizationStatus() == ALAuthorizationStatus.authorized
+        }
+        if !authorized {
+            self.showNoPermissionsView(library: true)
+        }
+    }
+    
+    func loadViewFromNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let view = UINib(nibName: "CameraView", bundle: bundle).instantiate(withOwner: self, options: nil)[0] as! UIView
+        return view
+    }
+    
     open func startSession() {
         session = AVCaptureSession()
-        session.sessionPreset = AVCaptureSessionPresetPhoto
+        switch (cameraOutputQuality) {
+        case .low:
+            session.sessionPreset = AVCaptureSessionPresetLow
+        case .medium:
+            session.sessionPreset = AVCaptureSessionPresetMedium
+        case .high:
+            session.sessionPreset = AVCaptureSessionPresetPhoto
+        }
         
         device = cameraWithPosition(currentPosition)
         if let device = device, device.hasFlash {
@@ -62,7 +215,7 @@ open class CameraView: UIView {
         }
     }
     
-    public func stopSession() {
+    open func stopSession() {
         cameraQueue.async {
             self.session?.stopRunning()
             self.preview?.removeFromSuperlayer()
@@ -84,7 +237,13 @@ open class CameraView: UIView {
             videoOrientation = AVCaptureVideoOrientation(rawValue: statusBarOrientation.rawValue)!
         }
         preview.connection.videoOrientation = videoOrientation
-        self.layer.addSublayer(preview)
+        self.view.layer.addSublayer(preview)
+        
+        if let gestureRecognizers = gestureRecognizers {
+            gestureRecognizers.forEach({ self.view.removeGestureRecognizer($0) })
+        }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.focus(gesture:)))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     func cameraWithPosition(_ position: AVCaptureDevicePosition) -> AVCaptureDevice? {
@@ -94,7 +253,20 @@ open class CameraView: UIView {
         return devices.filter { $0.position == position }.first
     }
     
-    public func rotatePreview() {
+    func showNoPermissionsView(library: Bool = false) {
+        if library {
+            permissionTitleView.text = "permissions.library.title".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+            permissionDescView.text = "permissions.library.desc".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+        } else {
+            permissionTitleView.text = "permissions.title".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+            permissionDescView.text = "permissions.desc".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self))
+        }
+        permissionSettingsButton.setTitle("permissions.settings".localizedWithOption(tableName: "Localizable", bundle: Bundle(for: CameraViewController.self)), for: UIControlState())
+        view.isHidden = true
+        permissionsView.isHidden = false
+    }
+    
+    open func rotatePreview() {
         guard preview != nil else {
             return
         }
@@ -113,9 +285,25 @@ open class CameraView: UIView {
             break
         default: break
         }
+        switch UIDevice.current.orientation {
+        case .portrait:
+            updateToRotation(angle: 0)
+            break
+        case .portraitUpsideDown:
+            updateToRotation(angle: 180)
+            break
+        case .landscapeRight:
+            updateToRotation(angle: 270)
+            break
+        case .landscapeLeft:
+            updateToRotation(angle: 90)
+            break
+        default:
+            break
+        }
     }
     
-    public func switchCamera() {
+    open func switchCamera() {
         guard let session = session, let input = input else {
             return
         }
@@ -139,9 +327,11 @@ open class CameraView: UIView {
         
         session.addInput(i)
         session.commitConfiguration()
+        
+        flashButton.isHidden = self.currentPosition == .front
     }
     
-    public func takePicture(completion: @escaping TakePictureCompletion) {
+    open func takePicture(completion: @escaping TakePictureCompletion) {
         cameraQueue.sync {
             let orientation = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue)!
             guard let videoConnection: AVCaptureConnection = self.imageOutput.connection(withMediaType: AVMediaTypeVideo) else {
@@ -168,7 +358,17 @@ open class CameraView: UIView {
         }
     }
     
-    public func toggleFlash() {
+    func toggleButtons(enabled: Bool) {
+        [
+            closeButton,
+            flashButton,
+            gridButton,
+            switchCameraButton,
+            takePhotoButton
+        ].forEach({ $0.isEnabled = enabled })
+    }
+    
+    open func toggleFlash() {
         guard let device = device, device.hasFlash else {
             return
         }
@@ -184,5 +384,94 @@ open class CameraView: UIView {
             }
             device.unlockForConfiguration()
         } catch _ { }
+        
+        let imageName: String
+        switch device.flashMode {
+        case .auto:
+            imageName = "flash_auto"
+        case .on:
+            imageName = "flash_on"
+        case .off:
+            imageName = "flash_off"
+        }
+        let image = UIImage(named: imageName, in: Bundle(for: type(of: self)), compatibleWith: nil)
+        flashButton.setImage(image, for: UIControlState())
+    }
+    
+    open func toggleGrid() {
+        if hLine1.alpha == 0.0 {
+            hLine1.alpha = 0.2
+            hLine2.alpha = 0.2
+            vLine1.alpha = 0.2
+            vLine2.alpha = 0.2
+            let image = UIImage(named: "grid_off", in: Bundle(for: CameraViewController.self), compatibleWith: nil)
+            gridButton.setImage(image, for: .normal)
+        } else {
+            hLine1.alpha = 0.0
+            hLine2.alpha = 0.0
+            vLine1.alpha = 0.0
+            vLine2.alpha = 0.0
+            let image = UIImage(named: "grid_on", in: Bundle(for: CameraViewController.self), compatibleWith: nil)
+            gridButton.setImage(image, for: .normal)
+        }
+    }
+    
+    fileprivate func updateToRotation(angle: CGFloat) {
+        UIView.animate(withDuration: 0.5, animations: {
+            let angle = CGFloat(M_PI / 180.0) * angle
+            self.closeButton.transform = CGAffineTransform(rotationAngle: angle)
+            self.flashButton.transform = CGAffineTransform(rotationAngle: angle)
+            self.gridButton.transform = CGAffineTransform(rotationAngle: angle)
+            self.switchCameraButton.transform = CGAffineTransform(rotationAngle: angle)
+            self.takePhotoButton.transform = CGAffineTransform(rotationAngle: angle)
+        })
+    }
+}
+
+extension CameraView {
+    
+    internal func focus(gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: self)
+        let viewsize = self.bounds.size
+        let newPoint = CGPoint(x: point.y / viewsize.height, y: 1.0 - point.x / viewsize.width)
+        
+        guard let device = device, device.isFocusModeSupported(.continuousAutoFocus) else {
+            return
+        }
+        
+        do {
+            try device.lockForConfiguration()
+        } catch _ {
+            return
+        }
+        
+        device.focusMode = AVCaptureFocusMode.continuousAutoFocus
+        device.exposurePointOfInterest = newPoint
+        device.exposureMode = AVCaptureExposureMode.continuousAutoExposure
+        device.unlockForConfiguration()
+        
+        self.focusView.alpha = 0.5
+        self.focusView.center = point
+        self.focusView.backgroundColor = UIColor.clear
+        self.focusView.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
+        self.focusView.layer.borderWidth = 1.0
+        self.focusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        self.view.addSubview(self.focusView)
+        
+        UIView.animate(withDuration: 0.6, delay: 0.0, usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn,
+                       animations: {
+                        self.focusView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }, completion: {(finished) in
+            UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.3,
+                           initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn,
+                           animations: {
+                            self.focusView.alpha = 1.0
+                            self.focusView.layer.borderColor = UIColor(rgb: 0x52ce90).cgColor
+            }, completion: {(finished) in
+                self.focusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.focusView.removeFromSuperview()
+            })
+        })
     }
 }

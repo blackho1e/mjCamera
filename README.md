@@ -1,7 +1,11 @@
 ##mjCamera
 A light weight & simple & easy camera for iOS by Swift.
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/mjCamera.svg)]()[![Swift version](https://img.shields.io/badge/swift-3.0-orange.svg)]()[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/v/mjCamera.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/p/mjCamera.svg)]()
+[![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
+[![Swift version](https://img.shields.io/badge/swift-3.0-orange.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/l/mjCamera.svg)]()
 
 <img width="50%" height="50%" src="https://github.com/blackho1e/mjCamera/raw/master/preview.png" />
 

@@ -9,6 +9,7 @@ extension PHAssetCollection {
             if let collection = collection {
                 collection.addImage(image, completion: completion)
             } else {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                 completion?(nil, nil)
             }
         }
@@ -20,7 +21,7 @@ extension PHAssetCollection {
         let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
         if let first = collection.firstObject {
             completion?(first)
-        }else{
+        } else {
             var assetCollectionPlaceholder : PHObjectPlaceholder!
             PHPhotoLibrary.shared().performChanges({
                 let createAlbumRequest : PHAssetCollectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: name)
@@ -30,8 +31,9 @@ extension PHAssetCollection {
                     if (success) {
                         let collectionFetchResult = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [assetCollectionPlaceholder.localIdentifier], options: nil)
                         completion?(collectionFetchResult.firstObject)
+                    } else {
+                        completion?(nil)
                     }
-                    completion?(nil)
                 }
             })
         }
