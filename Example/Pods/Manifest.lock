@@ -1,5 +1,5 @@
 PODS:
-  - mjCamera (0.0.2)
+  - mjCamera (0.0.5)
 
 DEPENDENCIES:
   - mjCamera (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  mjCamera: 7dfcfd5b042612a9d017cea717e244a7e97481c5
+  mjCamera: f628b5cb9edc8deb6489e1557ebf6bfb64a8c99b
 
 PODFILE CHECKSUM: 9c5df9f182e9f9e4095c85b2c4ca29e814fa91ba
 

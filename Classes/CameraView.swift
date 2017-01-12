@@ -41,6 +41,7 @@ open class CameraView: UIView {
     open var albumName: String = ""
     open var currentPosition = AVCaptureDevicePosition.back
     open var cameraOutputQuality = CameraOutputQuality.high
+    open var saveToPhoneLibrary = true
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,25 +116,30 @@ open class CameraView: UIView {
                     return
                 }
                 
-                PHAssetCollection.saveImageToAlbum(image: image, albumName: self.albumName, completion: { assetPlaceholder, error in
-                    self.toggleButtons(enabled: true)
-                    guard let assetPlaceholder = assetPlaceholder else {
-                        if !self.albumName.isEmpty {
-                            self.showNoPermissionsView(library: true)
+                if self.saveToPhoneLibrary {
+                    PHAssetCollection.saveImageToAlbum(image: image, albumName: self.albumName, completion: { assetPlaceholder, error in
+                        self.toggleButtons(enabled: true)
+                        guard let assetPlaceholder = assetPlaceholder else {
+                            if !self.albumName.isEmpty {
+                                self.showNoPermissionsView(library: true)
+                            }
+                            self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
+                            return
                         }
-                        self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
-                        return
-                    }
-                    
-                    let localId = assetPlaceholder.localIdentifier
-                    let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId], options: nil)
-                    if let asset = assets.firstObject {
-                        self.delegate?.cameraViewShutterButtonTapped(image: image, asset: asset)
-                    } else {
-                        self.showNoPermissionsView(library: true)
-                        self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
-                    }
-                })
+                        
+                        let localId = assetPlaceholder.localIdentifier
+                        let assets = PHAsset.fetchAssets(withLocalIdentifiers: [localId], options: nil)
+                        if let asset = assets.firstObject {
+                            self.delegate?.cameraViewShutterButtonTapped(image: image, asset: asset)
+                        } else {
+                            self.showNoPermissionsView(library: true)
+                            self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
+                        }
+                    })
+                } else {
+                    self.toggleButtons(enabled: true)
+                    self.delegate?.cameraViewShutterButtonTapped(image: image, asset: nil)
+                }
             }
         }
     }
@@ -445,9 +451,11 @@ extension CameraView {
         
         self.focusView.alpha = 0.5
         self.focusView.center = point
+        self.focusView.clipsToBounds = true
         self.focusView.backgroundColor = UIColor.clear
         self.focusView.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
         self.focusView.layer.borderWidth = 1.0
+        self.focusView.layer.cornerRadius = 6
         self.focusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         self.view.addSubview(self.focusView)
         

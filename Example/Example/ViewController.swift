@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
-        let cameraViewController = CameraViewController(albumName: "mjCamera") { image, asset in
+        let cameraViewController = CameraViewController(albumName: "mjCamera", saveToPhoneLibrary: false) { image, asset in
             guard let _ = image else {  //cancel
                 self.dismiss(animated: true, completion: nil)
                 return

@@ -8,11 +8,14 @@ open class CameraViewController: UIViewController, CameraViewDelegate {
     var onCompletion: CameraViewControllerCompletion?
     var albumName: String = ""
     var cameraOutputQuality: CameraOutputQuality = .high
+    var saveToPhoneLibrary: Bool!
     
-    public init(albumName: String = "", cameraOutputQuality: CameraOutputQuality = .high, completion: @escaping CameraViewControllerCompletion) {
+    public init(albumName: String = "", cameraOutputQuality: CameraOutputQuality = .high,
+                saveToPhoneLibrary: Bool = true, completion: @escaping CameraViewControllerCompletion) {
         super.init(nibName: nil, bundle: nil)
         self.albumName = albumName
         self.cameraOutputQuality = cameraOutputQuality
+        self.saveToPhoneLibrary = saveToPhoneLibrary
         onCompletion = completion
     }
     
@@ -32,6 +35,7 @@ open class CameraViewController: UIViewController, CameraViewDelegate {
         }
         cameraView.albumName = self.albumName
         cameraView.cameraOutputQuality = self.cameraOutputQuality
+        cameraView.saveToPhoneLibrary = self.saveToPhoneLibrary
     }
     
     open override var prefersStatusBarHidden: Bool {
