@@ -1,4 +1,4 @@
 import Photos
 
+public typealias CameraViewControllerCompletion = (Bool, UIImage?, PHAsset?) -> Void
 public typealias TakePictureCompletion = (UIImage?) -> Void
-public typealias CameraViewControllerCompletion = (UIImage?, PHAsset?) -> Void

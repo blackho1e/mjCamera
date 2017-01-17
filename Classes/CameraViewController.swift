@@ -82,11 +82,15 @@ open class CameraViewController: UIViewController, CameraViewDelegate {
     }
     
     func cameraViewCloseButtonTapped() {
-        self.onCompletion?(nil, nil)
+        self.onCompletion?(false, nil, nil)
     }
     
     func cameraViewShutterButtonTapped(image: UIImage?, asset: PHAsset?) {
-        self.onCompletion?(image, asset)
+        self.onCompletion?(true, image, asset)
+    }
+    
+    func cameraViewLastPhotoButtonTapped(image: UIImage?) {
+        self.onCompletion?(false, image, nil)
     }
     
     func rotateCameraView(_ notification: Notification) {

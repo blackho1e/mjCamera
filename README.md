@@ -23,10 +23,15 @@ pod 'mjCamera'
 To use this component couldn't be simpler. Add import CameraViewController to the top of you controller file.
 
 ```swift
-let cameraViewController = CameraViewController() { image in
-	guard let image = image else { //cancel
-		self.dismiss(animated: true, completion: nil)
-		return
+let cameraViewController = CameraViewController(albumName: "mjCamera", saveToPhoneLibrary: true) { success, image, asset in
+	if success {
+                
+	} else {
+		guard let _ = image else {  //cancel
+			self.dismiss(animated: true, completion: nil)
+			return
+		}
+		// When the last photo button is clicked
 	}
 }
 present(cameraViewController, animated: true, completion: nil)

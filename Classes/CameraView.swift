@@ -9,6 +9,7 @@ public enum CameraOutputQuality: Int {
 protocol CameraViewDelegate {
     func cameraViewCloseButtonTapped()
     func cameraViewShutterButtonTapped(image: UIImage?, asset: PHAsset?)
+    func cameraViewLastPhotoButtonTapped(image: UIImage?)
 }
 
 open class CameraView: UIView {
@@ -22,6 +23,7 @@ open class CameraView: UIView {
     @IBOutlet weak var gridButton: UIButton!
     @IBOutlet weak var switchCameraButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var lastPhotoButton: UIButton!
     
     @IBOutlet weak var permissionsView: UIView!
     @IBOutlet weak var permissionTitleView: UILabel!
@@ -70,9 +72,13 @@ open class CameraView: UIView {
             gridButton,
             switchCameraButton,
             takePhotoButton,
+            lastPhotoButton,
             permissionsView
         ].forEach({ self.addSubview($0) })
         self.setNeedsUpdateConstraints()
+        PHAssetCollection.fetchLastPhoto(resizeTo: CGSize(width: 40, height: 40)) { image in
+            self.lastPhotoButton.setImage(image, for: UIControlState())
+        }
     }
     
     open override func layoutSubviews() {
@@ -116,6 +122,8 @@ open class CameraView: UIView {
                     return
                 }
                 
+                self.lastPhotoButton.setImage(image, for: UIControlState())
+                
                 if self.saveToPhoneLibrary {
                     PHAssetCollection.saveImageToAlbum(image: image, albumName: self.albumName, completion: { assetPlaceholder, error in
                         self.toggleButtons(enabled: true)
@@ -144,17 +152,36 @@ open class CameraView: UIView {
         }
     }
     
+    @IBAction func lastPhotoButtonPressed(_ sender: Any) {
+        delegate?.cameraViewLastPhotoButtonTapped(image: self.lastPhotoButton.imageView?.image)
+    }
+    
     private func checkPermissions() {
         if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) != .authorized {
             AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { granted in
                 if granted {
-                    if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
-                        PHPhotoLibrary.requestAuthorization() { _ in
+                    if PHPhotoLibrary.authorizationStatus() != .authorized {
+                        PHPhotoLibrary.requestAuthorization() { status in
+                            if status != .authorized {
+                                DispatchQueue.main.async() {
+                                    self.showNoPermissionsView(library: true)
+                                }
+                            }
                         }
                     }
                 } else {
                     DispatchQueue.main.async() {
                         self.showNoPermissionsView()
+                    }
+                }
+            }
+        } else {
+            if PHPhotoLibrary.authorizationStatus() != .authorized {
+                PHPhotoLibrary.requestAuthorization() { status in
+                    if status != .authorized {
+                        DispatchQueue.main.async() {
+                            self.showNoPermissionsView(library: true)
+                        }
                     }
                 }
             }

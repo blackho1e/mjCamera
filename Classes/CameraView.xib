@@ -16,6 +16,7 @@
                 <outlet property="gridButton" destination="bDc-Nt-487" id="k2f-qI-0zi"/>
                 <outlet property="hLine1" destination="vsy-Hp-qpS" id="Z6d-dh-p17"/>
                 <outlet property="hLine2" destination="bvV-uN-D9g" id="Eey-Vf-L7c"/>
+                <outlet property="lastPhotoButton" destination="Xde-5m-pFg" id="J9S-cS-dIc"/>
                 <outlet property="permissionDescView" destination="kjv-Un-Zgw" id="UeJ-LI-0uV"/>
                 <outlet property="permissionSettingsButton" destination="tij-SL-N2t" id="CgA-ls-Ys9"/>
                 <outlet property="permissionTitleView" destination="Ip9-UX-9ca" id="ux9-pe-eGo"/>
@@ -76,7 +77,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-0Y-HE8">
-                    <rect key="frame" x="103" y="656" width="52" height="52"/>
+                    <rect key="frame" x="101" y="656" width="52" height="52"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <state key="normal" image="switch_camera"/>
                     <state key="highlighted" image="switch_camera_p"/>
@@ -91,6 +92,14 @@
                     <state key="highlighted" image="task_picture_p"/>
                     <connections>
                         <action selector="takePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="wMq-sW-LXS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xde-5m-pFg">
+                    <rect key="frame" x="283" y="662" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="lastPhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="Pzc-1V-NeN"/>
                     </connections>
                 </button>
             </subviews>

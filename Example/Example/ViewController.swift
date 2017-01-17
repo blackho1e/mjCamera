@@ -9,10 +9,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cameraButtonPressed(_ sender: Any) {
-        let cameraViewController = CameraViewController(albumName: "mjCamera", saveToPhoneLibrary: false) { image, asset in
-            guard let _ = image else {  //cancel
-                self.dismiss(animated: true, completion: nil)
-                return
+        let cameraViewController = CameraViewController(albumName: "mjCamera", saveToPhoneLibrary: true) { success, image, asset in
+            if success {
+                
+            } else {
+                guard let _ = image else {  //cancel
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
+                // When the last photo button is clicked
             }
         }
         present(cameraViewController, animated: true, completion: nil)

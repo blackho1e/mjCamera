@@ -53,4 +53,21 @@ extension PHAssetCollection {
             }
         })
     }
+    
+    public class func fetchLastPhoto(resizeTo size: CGSize?, contentMode: PHImageContentMode = .default, completion: ((UIImage?) -> Void)?) {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        if let lastAsset = fetchResult.lastObject {
+            PHImageManager.default().requestImage(for: lastAsset, targetSize: size!, contentMode: contentMode, options: PHImageRequestOptions(), resultHandler: { (result, info) in
+                DispatchQueue.main.async() {
+                    completion?(result)
+                }
+            })
+        } else {
+            DispatchQueue.main.async() {
+                completion?(nil)
+            }
+        }
+    }
 }
